@@ -27,22 +27,18 @@ export class CoffeesController {
   constructor(
     private readonly coffeeService: CoffeesService,
     @Inject(REQUEST) private readonly request: Request
-  ) {
-    console.log('Coffees Controller created');
-  }
+  ) {}
 
   @ApiForbiddenResponse({description: 'Forbidden'})
   @Public()
   @Get()
   async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto) {
-    console.log(protocol)
     //await new Promise(resolve => setTimeout(resolve, 5000))
     return this.coffeeService.findAll(paginationQuery);
   }
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
-    console.log(id)
     return this.coffeeService.findOne('' + id);
   }
 
