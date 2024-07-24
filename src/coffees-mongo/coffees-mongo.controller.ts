@@ -11,6 +11,7 @@ import {
 import { CoffeesMongoService } from './coffees-mongo.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 
 @Controller('coffees')
 export class CoffeesMongoController {
@@ -19,8 +20,8 @@ export class CoffeesMongoController {
   ) {}
 
   @Get()
-  async findAll(@Query() paginationQuery) {
-    return this.coffeeService.findAll();
+  async findAll(@Query() paginationQuery: PaginationQueryDto) {
+    return this.coffeeService.findAll(paginationQuery);
   }
 
   @Get(':id')
