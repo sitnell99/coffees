@@ -17,3 +17,10 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
+  mongo-db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_DATABASE: nest-course
